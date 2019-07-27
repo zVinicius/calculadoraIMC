@@ -24,10 +24,23 @@ class Home extends StatefulWidget{
          actions: <Widget>[
            IconButton(
              icon: Icon(Icons.refresh),
-             onPressed: (){
-
-             }, 
+             onPressed: (){ }, 
              )
+         ],
+       ),
+       backgroundColor: Colors.white,
+       body: Column(
+         //isso vai fazer com que todos os itens da coluna preencham toda a tela no eixo "x"
+         crossAxisAlignment: CrossAxisAlignment.stretch,
+         children: <Widget>[
+           //específicamente esse widget não vai ocupar toda linha dele pq foi estabelecido um tamanho para ele
+           Icon(Icons.person_outline, size: 120.0, color: Colors.green),
+           TextField(
+             keyboardType: TextInputType.number,
+             decoration: InputDecoration(
+               labelText: "Peso Kg",
+               labelStyle: TextStyle(color: Colors.green)),
+           )
          ],
        ),
      );
