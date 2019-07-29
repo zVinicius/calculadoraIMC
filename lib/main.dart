@@ -39,8 +39,20 @@ class Home extends StatefulWidget{
              keyboardType: TextInputType.number,
              decoration: InputDecoration(
                labelText: "Peso Kg",
-               labelStyle: TextStyle(color: Colors.green)),
-           )
+               labelStyle: TextStyle(color: Colors.green)
+               ),
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.green, fontSize: 25.0),
+           ),
+           TextField(
+             keyboardType: TextInputType.number,
+             decoration: InputDecoration(
+               labelText: "Altura (cm)",
+               labelStyle: TextStyle(color: Colors.green)
+              ),
+             textAlign: TextAlign.center,
+             style: TextStyle(color: Colors.green, fontSize: 25.0),
+             )
          ],
        ),
      );
