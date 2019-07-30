@@ -52,7 +52,15 @@ class Home extends StatefulWidget{
               ),
              textAlign: TextAlign.center,
              style: TextStyle(color: Colors.green, fontSize: 25.0),
-             )
+             ),
+            Container(
+              height: 50.0,
+              child: RaisedButton(
+                onPressed: (){},
+                child: Text("Calcular", style: TextStyle(color: Colors.white, fontSize: 25.0)),
+                color: Colors.green,
+              ),
+            )
          ],
        ),
      );
