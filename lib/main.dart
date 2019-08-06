@@ -14,6 +14,37 @@ class Home extends StatefulWidget{
  }
 
  class _HomeState extends State<Home>{
+
+   TextEditingController weigthController = TextEditingController();
+   TextEditingController heightController = TextEditingController();
+
+   String _infoText = "Informe Seus Dados.";
+
+   void _resetFields(){
+     weigthController.text = "";
+     heightController.text = "";
+
+     _infoText = "Informe Seus Dados.";
+   }
+
+   void _calculate(){
+     setState(() {
+        double weight = double.parse(weigthController.text);
+        double height = double.parse(heightController.text) / 100;
+
+        double imc = weight / (height * height);
+
+        print(imc);
+
+        if(imc < 18.6){
+          _infoText = "Abaixo do Peso (${imc.toStringAsPrecision(4)})";
+        }
+     });
+     
+
+
+   }
+
    @override
    Widget build(BuildContext context){
      return Scaffold(
@@ -24,7 +55,7 @@ class Home extends StatefulWidget{
          actions: <Widget>[
            IconButton(
              icon: Icon(Icons.refresh),
-             onPressed: (){ }, 
+             onPressed: _resetFields, 
              )
          ],
        ),
@@ -46,6 +77,7 @@ class Home extends StatefulWidget{
                 ),
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.green, fontSize: 25.0),
+                controller: weigthController,
             ),
             TextField(
               keyboardType: TextInputType.number,
@@ -55,6 +87,7 @@ class Home extends StatefulWidget{
                 ),
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.green, fontSize: 25.0),
+              controller: heightController,
               ),
               Padding(
                 padding: EdgeInsets.only(top:10.0, bottom: 10.0),
@@ -62,14 +95,14 @@ class Home extends StatefulWidget{
                   Container(
                     height: 50.0,
                     child: RaisedButton(
-                      onPressed: (){},
+                      onPressed: _calculate,
                       child: Text("Calcular", style: TextStyle(color: Colors.white, fontSize: 25.0)),
                       color: Colors.green,
                     ),
                   ),
               ),
               Text(
-                "Info",
+                _infoText,
                 textAlign: TextAlign.center,  
                 style: TextStyle(fontSize: 25.0, color: Colors.green),
               )
